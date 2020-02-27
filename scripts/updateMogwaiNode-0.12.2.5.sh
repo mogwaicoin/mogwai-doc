@@ -8,7 +8,7 @@ COIN_DAEMON2='mogwaid'
 COIN_CLI2='mogwai-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/mogwaicoin/mogwai/releases/download/v0.12.2.5/mogwaicore-0.12.2.5-linux64.tar.gz'    
-COIN_ZIP='/root//mogwai/mogwaicore-0.12.2.5-linux64.tar.gz'
+COIN_ZIP='/root/mogwai/mogwaicore-0.12.2.5-linux64.tar.gz'
 SENTINEL_REPO='https://github.com/mogwaicoin/mogwai-sentinel.git'
 COIN_NAME='MOGWAI'
 COIN_PORT=17777
@@ -22,6 +22,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 function download_node() {
+  systemctl stop MOGWAI.service
   echo -e "Preparing to download ${GREEN}$COIN_NAME${NC}."
   wget -q $COIN_TGZ
   compile_error
