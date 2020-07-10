@@ -7,7 +7,7 @@ COIN_CLI='/root/mogwai/mogwaicore-0.12.2/bin/mogwai-cli'
 COIN_DAEMON2='mogwaid'
 COIN_CLI2='mogwai-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/mogwaicoin/mogwai/releases/download/v0.12.2.6/mogwaicore-0.12.2-linux64.tar.gz'
+COIN_TGZ='https://github.com/mogwaicoin/mogwai/releases/download/v0.12.2.6/mogwaicore-0.12.2.6-linux64.tar.gz'
 COIN_ZIP='/root/mogwai/mogwaicore-0.12.2.6-linux64.tar.gz'
 SENTINEL_REPO='https://github.com/mogwaicoin/mogwai-sentinel.git'
 COIN_NAME='MOGWAI'
@@ -73,6 +73,14 @@ EOF
     echo -e "less /var/log/syslog${NC}"
     exit 1
   fi
+}
+
+function compile_error() {
+if [ "$?" -gt "0" ];
+ then
+  echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
+  exit 1
+fi
 }
 
 function important_information() {
